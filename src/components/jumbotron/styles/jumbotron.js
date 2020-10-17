@@ -13,3 +13,7 @@ export const Inner = styled.div`
     flex-direction: column;
   }
 `;
+
+export const Container = styled.div`
+  
+`;
