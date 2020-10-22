@@ -6,7 +6,7 @@ const ToggleContext = createContext();
 export default function Accordion({ children, ...restProps }){
     return (
         <Container {...restProps}>
-            <Inner>{Children}</Inner>
+            <Inner>{children}</Inner>
         </Container>
     )
 }
@@ -17,7 +17,7 @@ Accordion.Frame = function AccordionFrame({ children, ...restProps}){
     return <Frame {...restProps}>{children}</Frame>;
 }
 Accordion.Item = function AccordionItem({ children, ...restProps}){
-    const [toggleShow, setToggleShow] = useState(False);
+    const [toggleShow, setToggleShow] = useState(false);
     return (
         <ToggleContext.Provider value={{ toggleShow, setToggleShow}}>
             <Item {...restProps}>{children}</Item>;
