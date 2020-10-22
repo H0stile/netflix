@@ -1,4 +1,5 @@
 import React, {useState, useContext, createContext} from 'react';
+import { Container, Frame, Title, Item, Inner, Header, Body} from './styles/accordion';
 
 const ToggleContext = createContext();
 
@@ -26,8 +27,14 @@ Accordion.Item = function AccordionItem({ children, ...restProps}){
 Accordion.Header = function AccordionHeader({ children, ...restProps}){
     const { toggleShow, setToggleShow} = useContext(ToggleContext);
     return(
-        <Header Onclick={()=> setToggleShow(!toggleShow)}{...restProps}>
+        // (toggleShow) => !toggleShow) = if true (or false) then invert on click
+        <Header Onclick={()=> setToggleShow((toggleShow) => !toggleShow)}{...restProps}>    
             {children}
         </Header>
     );
+}
+
+Accordion.body = function AccordionBody({children, ...restProps}){
+    const { toggleShow } = useContext(ToggleContext);
+    return toggleShow ? <Body {...restProps}></Body> : null;
 }
