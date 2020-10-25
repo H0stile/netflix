@@ -28,7 +28,7 @@ Accordion.Header = function AccordionHeader({ children, ...restProps}){
     const { toggleShow, setToggleShow} = useContext(ToggleContext);
     return(
         // (toggleShow) => !toggleShow) = if true (or false) then invert on click
-        <Header Onclick={()=> setToggleShow((toggleShow) => !toggleShow)}{...restProps}>    
+        <Header onClick={()=> setToggleShow((toggleShow) => !toggleShow)}{...restProps}>    
             {children}
             {toggleShow ? (
                 <img src="/images/icons/close-slim.png" alt="close" />
@@ -41,5 +41,5 @@ Accordion.Header = function AccordionHeader({ children, ...restProps}){
 
 Accordion.Body = function AccordionBody({children, ...restProps}){
     const { toggleShow } = useContext(ToggleContext);
-    return toggleShow ? <Body {...restProps}></Body> : null;
+    return toggleShow ? <Body {...restProps}>{children}</Body> : null;
 }
